@@ -12,6 +12,14 @@ public class Main {
                 "7070-6767"
         );
 
+        // CREAMOS BIBLIOTEARIO
+        Bibliotecario bibliotecario1 = new Bibliotecario(
+                2,
+                "Maria Lopez",
+                "maria@gmail.com",
+                "7000-1111"
+        );
+
         // CREAMOS UNA CATEGORIA
         Categoria categoria1 = new Categoria(
                 1,
@@ -36,11 +44,48 @@ public class Main {
                 "2281-2378"
         );
 
+        biblioteca1.registrarUsuario(usuario1);
+        biblioteca1.registrarUsuario(usuario1, "07/10/2026");
+
+        biblioteca1.buscarLibro("Cien años de soledad");
+        biblioteca1.buscarLibro("Cien años de soledad", "Gabriel Garcia Marquez");
+
         // MOSTRAMOS INFORMACION
 
         // DEL USUARIO
         System.out.println("===== INFORMACION DEL USUARIO =====");
         usuario1.consultarInformacion();
+
+        System.out.println();
+
+        // DEL BIBLIOTECARIO
+        System.out.println("===== INFORMACION DEL BIBLIOTECARIO =====");
+        bibliotecario1.mostrarRol();
+        bibliotecario1.mostrarInformacion();
+        bibliotecario1.registrarLibro();
+        bibliotecario1.registrarUsuario();
+
+        System.out.println();
+
+        // POLIMORFISMO
+        System.out.println("===== POLIMORFISMO =====");
+        Persona persona1 = usuario1;
+        Persona persona2 = bibliotecario1;
+
+        persona1.mostrarRol();
+        persona2.mostrarRol();
+
+        System.out.println();
+
+        // POLI DE GESTIONABLE
+        Gestionable objeto1 = usuario1;
+        Gestionable objeto2 = libro1;
+
+        objeto1.mostrarInformacion();
+
+        System.out.println();
+
+        objeto2.mostrarInformacion();
 
         System.out.println();
 
@@ -65,6 +110,16 @@ public class Main {
 
         // MOSTRAR INFO DE LA BIBLIOTECA
         biblioteca1.mostrarInformacion();
+
+        System.out.println();
+
+        // MOSTRAR INFO NUEVA BIBLOTECA LAB 2
+        System.out.println("===== SOBRE CARGA DE METODOS =====");
+        biblioteca1.registrarUsuario(usuario1);
+        biblioteca1.registrarUsuario(usuario1, "07/10/2026");
+
+        biblioteca1.buscarLibro("Cien años de soledad");
+        biblioteca1.buscarLibro("Cien años de soledad", "Gabriel Garcia Marquez");
 
         System.out.println();
 

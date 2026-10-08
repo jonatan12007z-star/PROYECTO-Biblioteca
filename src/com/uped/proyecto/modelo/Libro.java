@@ -1,6 +1,6 @@
 package com.uped.proyecto.modelo;
 
-public class Libro {
+public class Libro implements Gestionable {
 
     // ATRIBUTOS
     private String codigo;
@@ -95,5 +95,16 @@ public class Libro {
         System.out.println("Editorial: " + editorial);
         System.out.println("Estado: " + estado);
         System.out.println("Categoria: " + categoria.getNombre());
+    }
+
+    // METODO GESTIONABLE
+    @Override
+    public void mostrarInformacion() {
+        System.out.println("Información del libro:");
+        System.out.println("Código: " + codigo);
+        System.out.println("Título: " + titulo);
+        System.out.println("Autor: " + autor);
+        System.out.println("Editorial: " + editorial);
+        System.out.println("Estado: " + estado);
     }
 }

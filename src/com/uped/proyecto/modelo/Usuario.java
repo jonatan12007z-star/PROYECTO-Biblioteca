@@ -1,67 +1,38 @@
 package com.uped.proyecto.modelo;
 
-public class Usuario {
-
-    // ATRIBUTOS
-    private int id;
-    private String nombre;
-    private String correo;
-    private String telefono;
+public class Usuario extends Persona implements Gestionable {
 
     // CONSTRUCTOR
     public Usuario(int id, String nombre, String correo, String telefono) {
-        this.id = id;
-        this.nombre = nombre;
-        this.correo = correo;
-        this.telefono = telefono;
+        super(id, nombre, correo, telefono);
     }
 
-    // GETTERS y SETTERS
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    // METODOS
-
-    // METODO 1
+    // METODO PROPIO DE USUARIO
     public void solicitarPrestamo() {
-        System.out.println(nombre + " ha solicitado un prestamo.");
+        System.out.println("El usuario ha solicitado un préstamo.");
     }
 
-    // METODO 2
+    // METODO PROPIO DE USUARIO
     public void consultarInformacion() {
-        System.out.println("ID: " + id);
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Correo: " + correo);
-        System.out.println("Telefono: " + telefono);
+        System.out.println("ID: " + getId());
+        System.out.println("Nombre: " + getNombre());
+        System.out.println("Correo: " + getCorreo());
+        System.out.println("Teléfono: " + getTelefono());
     }
 
+    // SOBRESCRITURA DEL METODO ABSTRACTO
+    @Override
+    public void mostrarRol() {
+        System.out.println("Rol: Usuario de la biblioteca");
+    }
+
+    @Override
+    public void mostrarInformacion() {
+        System.out.println("Informacion del usuario:");
+        System.out.println("ID: " + getId());
+        System.out.println("Nombre: " + getNombre());
+        System.out.println("Correo: " + getCorreo());
+        System.out.println("Telefono: " + getTelefono());
+    }
 }
+
