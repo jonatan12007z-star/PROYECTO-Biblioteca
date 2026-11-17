@@ -1,9 +1,12 @@
+import com.uped.proyecto.excepciones.PrestamoNoDisponibleException;
+import com.uped.proyecto.hilos.RespaldoBiblioteca;
 import com.uped.proyecto.modelo.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        System.out.println();
         // CREAMOS UN USUARIO
         Usuario usuario1 = new Usuario(
                 1,
@@ -127,8 +130,12 @@ public class Main {
         System.out.println("===== SOLICITUD DE PRESTAMO =====");
         usuario1.solicitarPrestamo();
 
-        // PRESTAR EL LIBRO (ACCION)
-        libro1.prestar();
+        // PRESTAR EL LIBRO (ACCION) PROTEGIDO CON TRY-CATCH
+        try {
+            libro1.prestar();
+        } catch (PrestamoNoDisponibleException e) {
+            System.out.println("Excepcion capturada: " + e.getMessage() + " | Disponibles: " + e.getEjemplaresDisponibles());
+        }
 
         System.out.println();
 
@@ -147,9 +154,11 @@ public class Main {
 
         // INTENTO DE PRESTAR EL MISMO LIBRO
         System.out.println("===== SEGUNDO INTENTO DE PRESTAMO =====");
-        libro1.prestar();
-
-        System.out.println();
+        try {
+            libro1.prestar();
+        } catch (PrestamoNoDisponibleException e) {
+            System.out.println("Excepcion capturada: " + e.getMessage() + " | Disponibles: " + e.getEjemplaresDisponibles());
+        }
 
         // FINALIZA EL PRESTAMO
         System.out.println("===== DEVOLUCION DEL LIBRO =====");
@@ -170,6 +179,10 @@ public class Main {
 
         // MOSTRAR LA INFO DE LA BIBLIOTECA Y FINAL
         biblioteca1.mostrarInformacion();
+
+        // LANZAR EL HILO EN SEGUNDO PLANO
+        RespaldoBiblioteca hiloRespaldo = new RespaldoBiblioteca();
+        hiloRespaldo.start(); // Esto activa la concurrencia de forma independiente
 
     }
 }

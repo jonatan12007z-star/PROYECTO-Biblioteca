@@ -17,7 +17,7 @@ public class Usuario extends Persona implements Gestionable {
         System.out.println("ID: " + getId());
         System.out.println("Nombre: " + getNombre());
         System.out.println("Correo: " + getCorreo());
-        System.out.println("Teléfono: " + getTelefono());
+        System.out.println("Telefono: " + getTelefono());
     }
 
     // SOBRESCRITURA DEL METODO ABSTRACTO

@@ -54,7 +54,7 @@ public abstract class Persona {
         System.out.println("ID: " + id);
         System.out.println("Nombre: " + nombre);
         System.out.println("Correo: " + correo);
-        System.out.println("Teléfono: " + telefono);
+        System.out.println("Telefono: " + telefono);
     }
 
     // METODO ABSTRACTO

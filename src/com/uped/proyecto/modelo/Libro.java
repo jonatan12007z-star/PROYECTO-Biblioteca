@@ -1,4 +1,5 @@
 package com.uped.proyecto.modelo;
+import com.uped.proyecto.excepciones.PrestamoNoDisponibleException;
 
 public class Libro implements Gestionable {
 
@@ -71,13 +72,15 @@ public class Libro implements Gestionable {
 
     // METODOS
 
-    // METODO 1
-    public void prestar() {
+    // METODO 1 (Actualizado con throws y throw)
+    public void prestar()throws PrestamoNoDisponibleException {
         if (estado.equals("Disponible")) {
             estado = "Prestado";
             System.out.println("El libro \"" + titulo + "\" ha sido prestado.");
         } else {
-            System.out.println("El libro \"" + titulo + "\" no esta disponible.");
+            // Lanzamos la excepcion checked
+            throw new PrestamoNoDisponibleException(
+                    "El libro \"" + titulo + "\" no esta disponible para prestamo.", 0 );
         }
     }
 
